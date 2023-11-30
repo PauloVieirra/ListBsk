@@ -1,0 +1,22 @@
+.card {
+    max-width: 350px;
+    margin: 20px auto;
+   }
+   
+   .cardHeader {
+    background-color: #4caf50;
+    color: white;
+   }
+   
+   .cardMedia {
+    height: 200px;
+   }
+   
+   .cardContent {
+    display: flex;
+    justify-content: space-between;
+   }
+   
+   .button {
+    margin: 20px auto;
+   }

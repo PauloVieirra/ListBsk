@@ -1,0 +1,11 @@
+.contMenubar{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    bottom: 0px;
+
+}
+.iconbar{
+    font-size: 30px;
+}
