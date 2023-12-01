@@ -14,7 +14,7 @@ const SignUp = () => {
     try {
       setError(null);
       await signUpWithEmailAndPassword(email, password);
-      navigate('/Home'); // Redirecione para a tela 'Home' após o cadastro bem-sucedido
+      navigate('/Ranked');// Redirecione para a tela 'Home' após o cadastro bem-sucedido
     } catch (error) {
       setError(error.message);
     }

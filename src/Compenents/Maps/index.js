@@ -6,7 +6,9 @@ import { DataLocations } from "../Data";
 import './style.css';
 
 class Maps extends Component {
+
  constructor(props) {
+  
     super(props);
 
     this.state = {
@@ -136,8 +138,9 @@ closeModal() {
           aria-describedby="modal-modal-description"
         >
           <div className="modal">
+
           <div className="center-modal">
-             <h2 id="modal-modal-title">{selectedLocation?.title}</h2>
+             <h2 id="modal-modal-title">{selectedLocation?.local}</h2>
             <Button onClick={this.closeModal}>Fechar</Button>
           </div>
            

@@ -12,7 +12,7 @@ const SignIn = () => {
  const handleSignIn = async () => {
     try {
       await signInWithEmailAndPassword(email, password);
-      navigate('/');
+      navigate('/Ranked');
     } catch (error) {
       // Lidar com erros de login, exibir mensagem de erro, etc.
       console.error('Erro ao fazer login:', error);

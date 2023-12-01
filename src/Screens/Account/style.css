@@ -1,0 +1,31 @@
+.divperson {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+   
+   .divimgperson {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+   }
+   
+   .imgperson {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+   }
+   
+   .dataperson {
+    margin-bottom: 20px;
+   }
+   
+   .divbtnout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+   
+   .btngoout {
+    margin-top: 10px;
+   }
