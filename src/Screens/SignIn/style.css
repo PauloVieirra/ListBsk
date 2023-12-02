@@ -22,19 +22,4 @@
     border-radius: 5px;
    }
    
-   .signin-container button {
-    width: 100%;
-    max-width: 350px;
-    padding: 0.75rem;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 1rem;
-   }
-   
-   .signin-container button:hover {
-    background-color: #0056b3;
-   }
+ 

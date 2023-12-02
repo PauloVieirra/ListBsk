@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../Context/useContext';
 import { useNavigate, Link } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardMedia, Button } from '@mui/material' // Importando componentes do Material-UI
 import './style.css';
+import '../../../src/App.css';
 
 const SignIn = () => {
  const { signInWithEmailAndPassword } = useAuth();
@@ -33,9 +35,11 @@ const SignIn = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleSignIn}>Sign In</button>
-      <Link to="/SignUp">
-         <button>Sign Up</button>
+
+      <Button   onClick={handleSignIn}>Entrar</Button>
+
+      <Link to="/SignUp" >
+      <Button>Cadastrar</Button>
       </Link>
     
     </div>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../Context/useContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardMedia, Button } from '@mui/material' // Importando componentes do Material-UI
+import '../../App.css';
 
 const SignUp = () => {
   const { signUpWithEmailAndPassword } = useAuth();
@@ -8,6 +10,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  
 
 
   const handleSignUp = async () => {
@@ -34,9 +37,10 @@ const SignUp = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleSignUp}>Sign Up</button>
+      <Button onClick={handleSignUp}>Cadastrar</Button>
+
       <Link to="/SignIn">
-        <button>SigIn</button>
+        <Button >SigIn</Button>
       </Link>
       {error && <p>{error}</p>}
     </div>
