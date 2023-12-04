@@ -36,10 +36,10 @@ const SignIn = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <Button   onClick={handleSignIn}>Entrar</Button>
+      <Button  onClick={handleSignIn}>Entrar</Button>
 
-      <Link to="/SignUp" >
-      <Button>Cadastrar</Button>
+      <Link to="/SignUp" className='btncad' >
+      <Button style={{color:'#fff'}}>Cadastrar</Button>
       </Link>
     
     </div>

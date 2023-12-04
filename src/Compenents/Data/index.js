@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import './style.css';
+import { Button } from "@mui/material";
 
 
     const DataLocations = [
@@ -38,6 +39,7 @@ import './style.css';
 ];
 
 const DataRanked = () => {
+    const [sortBy, setSortBy] = useState('');
     const dataEvents = [
         {   
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
@@ -45,9 +47,9 @@ const DataRanked = () => {
             pts: 168,
             rbt: 35,
             rou: 20,
-            sti:10,
+            sti:1,
             blo:15,
-            fal:26,
+            ass:26,
         },
         {   
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
@@ -56,145 +58,191 @@ const DataRanked = () => {
             rbt: 29,
             rou: 20,
             sti:10,
-            blo:15,
-            fal:26,
+            blo:8,
+            ass:26,
         },
         {   
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
             nome: "Play 3", 
-            pts: 145,
+            pts: 198,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti: 13,
+            blo: 18,
+            ass: 11,
         },
         {   
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
-            nome: "Play 1",
-            pts: 168,
+            nome: "Play 4",
+            pts: 199,
             rbt: 35,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti: 16,
+            blo: 19,
+            ass: 16,
         },
         {   
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
-            nome: "Play 2", 
-            pts: 145,
+            nome: "Play 5", 
+            pts: 111,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:18,
+            blo:1,
+            ass:2,
         },
         {   
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
-            nome: "Play 3", 
-            pts: 145,
+            nome: "Play 6", 
+            pts: 100,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:9,
+            blo:30,
+            ass:33,
         },
         {   
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
-            nome: "Play 1",
-            pts: 168,
+            nome: "Play 7",
+            pts: 115,
             rbt: 35,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:6,
+            blo:24,
+            ass:17,
         },
         {   
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
-            nome: "Play 2", 
-            pts: 145,
+            nome: "Play 8", 
+            pts: 186,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:5,
+            blo:31,
+            ass:31,
         },
         {   
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
-            nome: "Play 3", 
-            pts: 145,
+            nome: "Play 9", 
+            pts: 163,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:3,
+            blo:20,
+            ass:51,
         },
         {   
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
-            nome: "Play 1",
+            nome: "Play 10",
             pts: 168,
             rbt: 35,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:2,
+            blo:71,
+            ass:41,
         },
         {   
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
-            nome: "Play 2", 
+            nome: "Play 11", 
             pts: 145,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti: 0,
+            blo:56,
+            ass:79,
         },
         {   
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
-            nome: "Play 3", 
+            nome: "Play 12", 
             pts: 145,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:21,
+            blo:23,
+            ass:26,
         },
         {   
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
-            nome: "Play 1",
+            nome: "Play 13",
             pts: 168,
             rbt: 35,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:17,
+            blo:17,
+            ass:50,
         },
         {   
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
-            nome: "Play 2", 
+            nome: "Play 14", 
             pts: 145,
             rbt: 29,
             rou: 20,
-            sti:10,
+            sti:7,
             blo:15,
-            fal:26,
+            ass:102,
         },
         {   
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
-            nome: "Play 3", 
+            nome: "Play 15", 
             pts: 145,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:15,
-            fal:26,
+            sti:4,
+            blo:10,
+            ass:38,
         }
        
     ];
 
+     // Função para ordenar os jogadores com base na opção escolhida
+     const sortPlayers = (option) => {
+        const sortedPlayers = [...dataEvents]; // Cria uma cópia do array original
+
+        switch (option) {
+            case 'Cesta':
+                sortedPlayers.sort((a, b) => b.pts - a.pts); 
+                break;
+            case 'Rebote':
+                sortedPlayers.sort((a, b) => b.rbt - a.rbt); 
+                break;
+            case 'Roubo':
+                    sortedPlayers.sort((a, b) => b.rou - a.rou); 
+                    break;
+            case 'Still':
+                        sortedPlayers.sort((a, b) => b.sti - a.sti); 
+                    break; 
+            case 'Asistencia':
+                        sortedPlayers.sort((a, b) => b.ass - a.ass); 
+                        break;  
+             case 'Bloqueio':
+                            sortedPlayers.sort((a, b) => b.blo - a.blo); 
+                     break;                         
+            default:
+                break;
+        }
+
+        return sortedPlayers;
+    };
+
+    // Manipula a mudança na opção de ordenação
+    const handleSortChange = (option) => {
+        setSortBy(option); // Atualiza o estado com a nova opção
+    }; 
+
+
     return (
+        <>
+         <div className="rank-filter"> 
+                <Button onClick={() => handleSortChange('Cesta')}> Cestas </Button>
+                <Button onClick={() => handleSortChange('Rebote')}> Rebotes </Button>
+                <Button onClick={() => handleSortChange('Roubo')}> Roubo </Button>
+                <Button onClick={(()=> handleSortChange('Still'))} > Still </Button>
+                <Button onClick={(()=> handleSortChange('Bloqueio'))} > Block </Button>
+                <Button onClick={(()=> handleSortChange('Asistencia'))} > Assit </Button>
+            </div>
         <div className="diccardrank">
-            {dataEvents.map((event, index) => (
+        <div className="space"/>
+        {sortPlayers(sortBy).map((event, index) => (
                 <div key={index} className="carddranketails">
                     <div className="rankimagecard">
                     {event.img && <img src={event.img}  className="imgfront" />}
@@ -222,6 +270,7 @@ const DataRanked = () => {
             ))}
             <div className="space"/>
         </div>
+        </>
     );
 }
 

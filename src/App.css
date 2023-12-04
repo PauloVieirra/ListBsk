@@ -39,29 +39,41 @@
   }
 }
 
+/* Estilos da barra de rolagem */
+::-webkit-scrollbar {
+  width: 1px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Cor de fundo da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #88888800; /* Cor do indicador de rolagem */
+  border-radius: 5px; /* Borda arredondada do indicador */
+}
+
 .container {
   background: linear-gradient(30deg, rgba(14, 13, 13), rgb(31, 29, 29), rgba(14, 13, 13, 0.9), #484b52); 
-  
-  
 }
 .btncad{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(114, 236, 105, 0.842);
+  background-color: rgba(33, 34, 33, 0.842);
   text-decoration: none;
   margin: 5px;
   border-radius: 4px;
-  color: rgb(50, 54, 56)
+  color: rgba(50, 54, 56, 0.452)
 }
 .btnent{
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  color: aliceblue;
   background-color: rgba(226, 172, 25, 0.842);
   min-width: 160px;
   margin: 5px;
-  color: rgb(246, 247, 248);
   border-radius: 4px;
 }
