@@ -6,11 +6,11 @@ import { useAuth } from '../Context/useContext';
 
 
 const AppRoutesControl = () => {
-    const { isAuthenticated } = useAuth();
+    const { user } = useAuth();
   return (
     <Router> 
     <Routes>
-    <Route path="/*" element={isAuthenticated ? <AppRoutes /> : <AuthRoutes />} />
+    <Route path="/*" element={user ? <AppRoutes /> : <AuthRoutes />} />
     </Routes>
   </Router>
   );

@@ -1,42 +1,12 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import firebase from '../Settings/FirebaseConect'; // Importe corretamente o módulo Firebase
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import firebase from '../Settings/FirebaseConect';
 
 const AuthContext = createContext();
 
-const useAuth = () => {
-  const { currentUser, signUpWithEmailAndPassword, signInWithEmailAndPassword, isAuthenticated, logout } = useContext(AuthContext);
-
-  return {
-    currentUser,
-    signUpWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    isAuthenticated,
-    logout
-  };
-};
-
 const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Nova variável de estado para autenticação
-
-  const signUpWithEmailAndPassword = async (email, password) => {
-    try {
-      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-
-      const { user } = userCredential;
-      const { uid } = user;
-
-      const userData = {
-        email: user.email,
-        uid: uid,
-      };
-
-      await firebase.database().ref(`users/${uid}`).set(userData);
-    } catch (error) {
-      throw error;
-    }
-  };
 
   const signInWithEmailAndPassword = async (email, password) => {
     try {
@@ -54,22 +24,47 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const signUpWithEmailAndPassword = async (email, password) => {
+    try {
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+      const { user } = userCredential;
+
+      const { uid } = user;
+      const userData = {
+        email: user.email,
+        uid: uid,
+      };
+
+      await firebase.database().ref(`users/${uid}`).set(userData);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
       setLoading(false);
-      setIsAuthenticated(!!user); // Define isAuthenticated como true se houver um usuário logado
+      if (user) {
+        const userRef = firebase.database().ref(`users/${user.uid}`);
+        userRef.once('value', (snapshot) => {
+          const userData = snapshot.val();
+          setUser(userData);
+        });
+      } else {
+        setUser(null);
+      }
     });
 
     return unsubscribe;
   }, []);
 
   const value = {
-    currentUser,
+    user,
+    signInWithEmailAndPassword,
     logout,
     signUpWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    isAuthenticated // Incluímos isAuthenticated no value do contexto
+    currentUser, // if needed in your app
   };
 
   return (
@@ -79,4 +74,12 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export { AuthContext, AuthProvider, useAuth };
+const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth deve ser usado dentro de um AuthProvider.');
+  }
+  return context;
+};
+
+export { AuthProvider, useAuth };

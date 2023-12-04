@@ -1,6 +1,8 @@
 import React,{useState} from "react";
+import { Button, Modal } from "@mui/material";
+import Head from "../Header";
+import { useAuth } from "../../Context/useContext";
 import './style.css';
-import { Button } from "@mui/material";
 
 
     const DataLocations = [
@@ -39,7 +41,11 @@ import { Button } from "@mui/material";
 ];
 
 const DataRanked = () => {
+    
     const [sortBy, setSortBy] = useState('');
+    const[modalPlayer, setModalPlayer] = useState(false);
+    const [clickedCardData, setClickedCardData] = useState(null);
+
     const dataEvents = [
         {   
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
@@ -229,21 +235,37 @@ const DataRanked = () => {
         setSortBy(option); // Atualiza o estado com a nova opção
     }; 
 
+    const handleCardClick = (cardData) => {
+        setClickedCardData(cardData);
+        setModalPlayer(true);
+    }
+
+    const handleClosePlayer = () => {
+        setModalPlayer(false);
+    }
+
+
+   
+
 
     return (
         <>
+          <div className="divtop"> 
+          <Head/>
          <div className="rank-filter"> 
-                <Button onClick={() => handleSortChange('Cesta')}> Cestas </Button>
+                <Button onClick={() => handleSortChange('Cesta')}> Pontos </Button>
                 <Button onClick={() => handleSortChange('Rebote')}> Rebotes </Button>
                 <Button onClick={() => handleSortChange('Roubo')}> Roubo </Button>
                 <Button onClick={(()=> handleSortChange('Still'))} > Still </Button>
                 <Button onClick={(()=> handleSortChange('Bloqueio'))} > Block </Button>
                 <Button onClick={(()=> handleSortChange('Asistencia'))} > Assit </Button>
             </div>
+            </div>  
         <div className="diccardrank">
         <div className="space"/>
+        <div className="space"/>
         {sortPlayers(sortBy).map((event, index) => (
-                <div key={index} className="carddranketails">
+                <div key={index} className="carddranketails" onClick={() => handleCardClick(event)} >
                     <div className="rankimagecard">
                     {event.img && <img src={event.img}  className="imgfront" />}
                     </div>
@@ -260,7 +282,7 @@ const DataRanked = () => {
                         </div>
                         <div className="ranklinedatas">
                     <p>blo: {event.blo}</p>
-                    <p>fal: {event.fal}</p> 
+                    <p>Asist: {event.ass}</p> 
                         </div>
                     </div>
                  
@@ -270,7 +292,28 @@ const DataRanked = () => {
             ))}
             <div className="space"/>
         </div>
+        {clickedCardData && (
+        <Modal
+                open={modalPlayer}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <div className="modal">
+                    <div className="center-modal">
+                        <div >
+                            <img src={clickedCardData.img} className="imgprofile" /> 
+                        </div>
+                        <h4>{clickedCardData.nome}</h4>
+
+
+
+                        <Button onClick={handleClosePlayer}>Fechar</Button>
+                    </div>
+                </div>
+            </Modal>
+        )}
         </>
+        
     );
 }
 

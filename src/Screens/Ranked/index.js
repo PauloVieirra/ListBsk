@@ -8,9 +8,6 @@ const Rank = () => {
     return(
         <>
          <div className="divranked">
-            <div>
-                Header
-            </div>
             <div className="divcomranked">
                  <DataRanked/> 
             </div>

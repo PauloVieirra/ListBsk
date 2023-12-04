@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import './style.css';
 
 const Account = () => {
- const { currentUser, logout } = useAuth();
+ const { logout, user } = useAuth();
  const navigate = useNavigate();
 
  const handleLogout = async () => {
@@ -19,11 +19,16 @@ const Account = () => {
  return (
     <div className="divperson">
       <div className="divimgperson">
-        <img src={currentUser.photoURL} alt="Imagem do usuário" className="imgperson" />
+        {/* Use user.photoURL se estiver disponível */}
+        {user && user.img && <img src={user.img} alt="Imagem do usuário" className="imgperson" />}
       </div>
       <div className="dataperson">
-        <h3>{currentUser.displayName}</h3>
-        <p>{currentUser.email}</p>
+        {user && (
+          <>
+            <h3>{user.nome}</h3>
+            <h4>{user.email}</h4>
+          </>
+        )}
       </div>
       <div divbtnout>
         <button onClick={handleLogout} className="btngoout">Logout</button>

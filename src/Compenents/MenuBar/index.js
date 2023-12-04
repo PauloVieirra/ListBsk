@@ -17,25 +17,23 @@ const MenuMobile = () => {
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
-      showLabels
       className="contMenubar"
-     >
-        <Link to="/">
+    >
+      <Link to="/" className="link">
         <BottomNavigationAction label="Inicio" className="iconbar" icon={<RoomIcon />} />
-        </Link>
-      
-        <Link to="/Ranked">
-         <BottomNavigationAction label="Rank" className="iconbar" icon={<SportsBasketballIcon />} />   
-        </Link>
-      
-        <Link to="/Events">
-        <BottomNavigationAction label="Eventos" className="iconbar" icon={<EventAvailableIcon />} />   
-        </Link>
-   
-        <Link to="/Account">
-         <BottomNavigationAction label="Conta" className="iconbar" icon={<AccountCircleIcon />} />   
-        </Link>
-      
+      </Link>
+
+      <Link to="/Ranked" className="link">
+        <BottomNavigationAction label="Rank" className="iconbar" icon={<SportsBasketballIcon />} />
+      </Link>
+
+      <Link to="/Events" className="link">
+        <BottomNavigationAction label="Eventos" className="iconbar" icon={<EventAvailableIcon />} />
+      </Link>
+
+      <Link to="/Account" className="link">
+        <BottomNavigationAction label="Conta" className="iconbar" icon={<AccountCircleIcon />} />
+      </Link>
     </BottomNavigation>
  );
 }
