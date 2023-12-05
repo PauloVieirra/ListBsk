@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useMemo} from "react";
 import { Button, Modal, TextField } from "@mui/material";
 import Head from "../Header";
 import { useAuth } from "../../Context/useContext";
@@ -47,28 +47,36 @@ const DataRanked = () => {
     const [clickedCardData, setClickedCardData] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const dataEvents = [
-        {   
+    const DataRankedPlay = [
+        {   ano: 1988,
+            estatura: 1.80,
+            posit:"Armador",
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
             nome: "Play 1",
             pts: 168,
             rbt: 35,
             rou: 20,
-            sti:1,
-            blo:15,
-            ass:26,
+            sti: 1,
+            blo: 15,
+            ass: 26,
         },
         {   
+            ano: 1990,
+            estatura: 1.90,
+            posit:"Ala",
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
             nome: "Play 2", 
             pts: 145,
             rbt: 29,
             rou: 20,
-            sti:10,
-            blo:8,
-            ass:26,
+            sti: 10,
+            blo: 8,
+            ass: 26,
         },
         {   
+            ano: 2000,
+            estatura: 1.88,
+            posit:"Armador",
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
             nome: "Play 3", 
             pts: 198,
@@ -79,6 +87,9 @@ const DataRanked = () => {
             ass: 11,
         },
         {   
+            ano: 1998,
+            estatura: 1.98,
+            posit:"Ala",
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
             nome: "Play 4",
             pts: 199,
@@ -89,6 +100,9 @@ const DataRanked = () => {
             ass: 16,
         },
         {   
+            ano: 1972,
+            estatura: 1.75,
+            posit:"Armador",
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
             nome: "Play 5", 
             pts: 111,
@@ -99,6 +113,9 @@ const DataRanked = () => {
             ass:2,
         },
         {   
+            ano: 2005,
+            estatura: 1.97,
+            posit:"Armador",
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
             nome: "Play 6", 
             pts: 100,
@@ -109,6 +126,9 @@ const DataRanked = () => {
             ass:33,
         },
         {   
+            ano: 2001,
+            estatura: 1.86,
+            posit:"Armador",
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
             nome: "Play 7",
             pts: 115,
@@ -119,6 +139,9 @@ const DataRanked = () => {
             ass:17,
         },
         {   
+            ano: 2009,
+            estatura: 2.00,
+            posit:"Pivo",
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
             nome: "Play 8", 
             pts: 186,
@@ -129,6 +152,9 @@ const DataRanked = () => {
             ass:31,
         },
         {   
+            ano: 1996,
+            estatura: 1.91,
+            posit:"Ala",
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
             nome: "Play 9", 
             pts: 163,
@@ -139,6 +165,9 @@ const DataRanked = () => {
             ass:51,
         },
         {   
+            ano: 1980,
+            estatura: 1.83,
+            posit:"Armador",
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
             nome: "Play 10",
             pts: 168,
@@ -149,6 +178,9 @@ const DataRanked = () => {
             ass:41,
         },
         {   
+            ano: 1988,
+            estatura: 1.88,
+            posit:"Armador",
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
             nome: "Play 11", 
             pts: 145,
@@ -159,6 +191,9 @@ const DataRanked = () => {
             ass:79,
         },
         {   
+            ano: 2010,
+            estatura: 1.80,
+            posit:"Armador",
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
             nome: "Play 12", 
             pts: 145,
@@ -169,6 +204,9 @@ const DataRanked = () => {
             ass:26,
         },
         {   
+            ano: 1978,
+            estatura: 1.99,
+            posit:"Pivo",
             img: "https://static01.nyt.com/images/2015/03/08/sports/dogMASK5/dogMASK5-superJumbo.jpg",
             nome: "Play 13",
             pts: 168,
@@ -179,6 +217,9 @@ const DataRanked = () => {
             ass:50,
         },
         {   
+            ano: 1990,
+            estatura: 1.83,
+            posit:"Ala",
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpc6HDtmtJmABW3wkh4uJa6LqJ0-wOwEW_dg&usqp=CAU",
             nome: "Play 14", 
             pts: 145,
@@ -189,6 +230,9 @@ const DataRanked = () => {
             ass:102,
         },
         {   
+            ano: 1978,
+            estatura: 1.87,
+            posit:"Ala",
             img: "https://cdn.vox-cdn.com/thumbor/ojXhDh4Q1mxyhawDccKf2gPFibQ=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/7705195/Sad_Chris_Paul_Couldnt_Beat_The_Warriors_Is_Now_A_Meme.jpg",
             nome: "Play 15", 
             pts: 145,
@@ -201,133 +245,146 @@ const DataRanked = () => {
        
     ];
 
-     // Função para ordenar os jogadores com base na opção escolhida
-     const sortPlayers = (option) => {
-        const sortedPlayers = [...dataEvents]; // Cria uma cópia do array original
-
+    const sortPlayers = (option, players) => {
+        const sortedPlayers = [...players]; // Utiliza os jogadores filtrados
+    
         switch (option) {
-            case 'Cesta':
-                sortedPlayers.sort((a, b) => b.pts - a.pts); 
-                break;
-            case 'Rebote':
-                sortedPlayers.sort((a, b) => b.rbt - a.rbt); 
-                break;
-            case 'Roubo':
-                    sortedPlayers.sort((a, b) => b.rou - a.rou); 
-                    break;
-            case 'Still':
-                        sortedPlayers.sort((a, b) => b.sti - a.sti); 
-                    break; 
-            case 'Asistencia':
-                        sortedPlayers.sort((a, b) => b.ass - a.ass); 
-                        break;  
-             case 'Bloqueio':
-                            sortedPlayers.sort((a, b) => b.blo - a.blo); 
-                     break;                         
-            default:
-                break;
+          case 'Cesta':
+            sortedPlayers.sort((a, b) => b.pts - a.pts);
+            break;
+          case 'Rebote':
+            sortedPlayers.sort((a, b) => b.rbt - a.rbt);
+            break;
+          case 'Roubo':
+            sortedPlayers.sort((a, b) => b.rou - a.rou);
+            break;
+          case 'Still':
+            sortedPlayers.sort((a, b) => b.sti - a.sti);
+            break;
+          case 'Asistencia':
+            sortedPlayers.sort((a, b) => b.ass - a.ass);
+            break;
+          case 'Bloqueio':
+            sortedPlayers.sort((a, b) => b.blo - a.blo);
+            break;
+          default:
+            break;
         }
-
+    
         return sortedPlayers;
-    };
-
-    // Manipula a mudança na opção de ordenação
-    const handleSortChange = (option) => {
+      };
+    
+      const handleSortChange = (option) => {
         setSortBy(option); // Atualiza o estado com a nova opção
-    }; 
-
-    const handleCardClick = (cardData) => {
+      };
+    
+      const handleCardClick = (cardData) => {
         setClickedCardData(cardData);
         setModalPlayer(true);
-    }
-
-    const handleClosePlayer = () => {
+      };
+    
+      const handleClosePlayer = () => {
         setModalPlayer(false);
-    }
-
+      };
+    
+      const handleOrderPlayers = () => {
+        // Lógica para ordenar jogadores quando o botão é clicado
+        const sortedPlayers = sortPlayers(sortBy, DataRankedPlay);
+        return sortedPlayers;
+      };
     
 
-   
+      const filteredData = useMemo(() => {
+    return DataRankedPlay.filter((player) => {
+      const { nome, posicao } = player;
+      return (
+        (nome && nome.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (posicao && posicao.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+    });
+  }, [DataRankedPlay, searchTerm]);
 
-
-    return (
+  const filteredAndSortedData = useMemo(() => {
+    const sortedPlayers = sortPlayers(sortBy, filteredData);
+    return sortedPlayers;
+  }, [filteredData, sortBy]);
+    
+      return (
         <>
-          <div className="divtop"> 
-          <Head/>
-          <div className="divseachBar">
-          <TextField
-          label="Buscar jogador"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="seachBar"
-        />
-          </div>
-            <div className="rank-filter"> 
-                <Button onClick={() => handleSortChange('Cesta')}> Pontos </Button>
-                <Button onClick={() => handleSortChange('Rebote')}> Rebotes </Button>
-                <Button onClick={() => handleSortChange('Roubo')}> Roubo </Button>
-                <Button onClick={(()=> handleSortChange('Still'))} > Still </Button>
-                <Button onClick={(()=> handleSortChange('Bloqueio'))} > Block </Button>
-                <Button onClick={(()=> handleSortChange('Asistencia'))} > Assit </Button>
+          <div className="divtop">
+            <Head />
+            <div className="divseachBar">
+              <TextField
+                label="Buscar jogador"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="seachBar"
+              />
             </div>
-            </div>  
-        <div className="diccardrank">
-        {sortPlayers(sortBy).map((event, index) => (
-                <div key={index} className="carddranketails" onClick={() => handleCardClick(event)} >
-                    <div className="rankimagecard">
-                    {event.img && <img src={event.img}  className="imgfront" />}
-                    </div>
-                    <div className="rankdadoscard">
-                    <h4>{event.nome}</h4>
-                    <div className="datarankline">
-                        <div className="ranklinedatas">
-                    <p>pts:{event.pts}</p>
-                    <p>rbt: {event.rbt}</p> 
-                        </div>
-                        <div className="ranklinedatas">
-                    <p>rou: {event.rou}</p>
-                    <p>sti: {event.sti}</p> 
-                        </div>
-                        <div className="ranklinedatas">
-                    <p>blo: {event.blo}</p>
-                    <p>Asist: {event.ass}</p> 
-                        </div>
-                    </div>
-                 
-                    </div>
-                  
+            <div className="rank-filter">
+              <Button onClick={() => handleSortChange('Cesta')}>Pontos</Button>
+              <Button onClick={() => handleSortChange('Rebote')}>Rebotes</Button>
+              <Button onClick={() => handleSortChange('Roubo')}>Roubo</Button>
+              <Button onClick={() => handleSortChange('Still')}>Still</Button>
+              <Button onClick={() => handleSortChange('Bloqueio')}>Block</Button>
+              <Button onClick={() => handleSortChange('Asistencia')}>Assit</Button>
+            </div>
+          </div>
+          <div className="diccardrank">
+            {filteredAndSortedData.map((event, index) => (
+              <div key={index} className="carddranketails" onClick={() => handleCardClick(event)}>
+                <div className="rankimagecard">
+                  {event.img && <img src={event.img} className="imgfront" alt="Player" />}
                 </div>
+                <div className="rankdadoscard">
+                  <h4>{event.nome}</h4>
+                  <div className="datarankline">
+                    <div className="ranklinedatas">
+                      <p>pts: {event.pts}</p>
+                      <p>rbt: {event.rbt}</p>
+                    </div>
+                    <div className="ranklinedatas">
+                      <p>rou: {event.rou}</p>
+                      <p>sti: {event.sti}</p>
+                    </div>
+                    <div className="ranklinedatas">
+                      <p>blo: {event.blo}</p>
+                      <p>Asist: {event.ass}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
-            <div className="space"/>
-        </div>
-        {clickedCardData && (
-        <Modal
-                open={modalPlayer}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
+            <div className="space" />
+          </div>
+          {clickedCardData && (
+            <Modal
+              open={modalPlayer}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
             >
-                <div className="modal">
-                    <div className="center-modal">
-                        <div >
-                            <img src={clickedCardData.img} className="imgprofile" /> 
-                        </div>
-                        <h4>{clickedCardData.nome}</h4>
+              <div className="modal">
+                <div className="center-modal" style={{display:'flex', height:'100vh' ,backgroundColor:'yellow'}}>
+                  <div>
+                    <img src={clickedCardData.img} className="imgprofile" alt="Player profile" />
+                  </div>
+                  <h4>{clickedCardData.nome}</h4>
+                  <h4>{clickedCardData.ano}</h4>
+                  <h4>{clickedCardData.estatura}</h4>
+                  <h4>{clickedCardData.posit}</h4>
 
-
-
-                        <Button onClick={handleClosePlayer}>Fechar</Button>
-                    </div>
+                  <Button onClick={handleClosePlayer}>Fechar</Button>
                 </div>
+              </div>
             </Modal>
-        )}
+          )}
         </>
-        
-    );
-}
+      );
+    }
 
 const DataPlayers = () => {
     const [showFullDiv, setShowFullDiv] = useState(true);
-    const dataEvents = [
+    const DataRankedPlay = [
         {
             img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
             nome: "Play 1",
@@ -401,7 +458,7 @@ const DataPlayers = () => {
       <>
         <div onClick={toggleDiv} className={`conrbtnflat ${showFullDiv ? '' : 'retractbtn'}`}>See</div>
         <div className={`listfront ${showFullDiv ? '' : 'retract'}`}>
-            {dataEvents.map((event, index) => (
+            {DataRankedPlay.map((event, index) => (
                    <div key={index} className="player-info">
                          {event.img && <img src={event.img}  className="imgfront" />}
                          <p>pts: {event.pts}</p>

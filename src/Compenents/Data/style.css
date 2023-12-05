@@ -80,11 +80,10 @@ background-color: aqua;
 
 .modal{
     display: flex;
-    width: 100vw;
-    height: 100%;
+    background-color: aqua;
 }
 .center-modal{
-   
+    background-color: aquamarine;
 }
 
 
