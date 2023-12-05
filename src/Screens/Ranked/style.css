@@ -1,4 +1,12 @@
 .divcomranked{
-    padding-top: 174px;
     max-height: 300px;
+}
+.btninstall{
+   display: flex;
+   width: auto;
+   height: auto;
+   position: absolute;
+   z-index: 200;
+   top: 20px;
+   right: 20px;
 }
