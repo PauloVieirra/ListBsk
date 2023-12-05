@@ -8,6 +8,7 @@ const Rank = () => {
     return(
         <>
          <div className="divranked">
+         
             <div className="divcomranked">
                  <DataRanked/> 
             </div>

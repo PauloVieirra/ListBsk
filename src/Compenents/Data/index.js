@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Button, Modal } from "@mui/material";
+import { Button, Modal, TextField } from "@mui/material";
 import Head from "../Header";
 import { useAuth } from "../../Context/useContext";
 import './style.css';
@@ -45,6 +45,7 @@ const DataRanked = () => {
     const [sortBy, setSortBy] = useState('');
     const[modalPlayer, setModalPlayer] = useState(false);
     const [clickedCardData, setClickedCardData] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const dataEvents = [
         {   
@@ -244,6 +245,7 @@ const DataRanked = () => {
         setModalPlayer(false);
     }
 
+    
 
    
 
@@ -252,7 +254,15 @@ const DataRanked = () => {
         <>
           <div className="divtop"> 
           <Head/>
-         <div className="rank-filter"> 
+          <div className="divseachBar">
+          <TextField
+          label="Buscar jogador"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="seachBar"
+        />
+          </div>
+            <div className="rank-filter"> 
                 <Button onClick={() => handleSortChange('Cesta')}> Pontos </Button>
                 <Button onClick={() => handleSortChange('Rebote')}> Rebotes </Button>
                 <Button onClick={() => handleSortChange('Roubo')}> Roubo </Button>
@@ -262,8 +272,6 @@ const DataRanked = () => {
             </div>
             </div>  
         <div className="diccardrank">
-        <div className="space"/>
-        <div className="space"/>
         {sortPlayers(sortBy).map((event, index) => (
                 <div key={index} className="carddranketails" onClick={() => handleCardClick(event)} >
                     <div className="rankimagecard">

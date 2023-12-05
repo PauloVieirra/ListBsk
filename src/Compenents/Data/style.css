@@ -3,6 +3,19 @@
     width: 100%;
     height: 58px;
 }
+.divseachBar{
+    display: flex;
+    width: 100vw;
+    height: 68px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+.seachBar{
+    width: 90%;
+    height: auto;
+    border-radius: 50px;
+}
 
 .listfront {
     display: flex;
@@ -61,6 +74,17 @@
 .contlistpela{
 display: flex;
 background-color: aqua;
+}
+
+/*Modal*/
+
+.modal{
+    display: flex;
+    width: 100vw;
+    height: 100%;
+}
+.center-modal{
+   
 }
 
 
@@ -143,10 +167,11 @@ p {
     z-index: 80;
     left: 0px;
     width: 100%;
-    height: 52px;
+    height: 40px;
     overflow-x: auto; 
     white-space: nowrap;
     background-color: #fff;
+    padding-top: 10px;
     box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.2); 
   }
   .divtop{
