@@ -32,7 +32,9 @@ const Rank = () => {
       installPromptEvent.prompt();
       const userChoice = await installPromptEvent.userChoice;
       if (userChoice.outcome === 'accepted') {
+        setIsAppInstalled(true);
         console.log('Usuário aceitou a instalação');
+
       } else {
         console.log('Usuário recusou a instalação');
       }
@@ -44,7 +46,7 @@ const Rank = () => {
     <div className="divranked">
       <div className="divcomranked">
         <DataRanked />
-        {!isAppInstalled && (
+        {isAppInstalled === false && (
           <Button onClick={handleInstallClick} className="btninstall">Instalar App</Button>
         )}
       </div>
