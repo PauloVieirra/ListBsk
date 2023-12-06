@@ -47,7 +47,7 @@ const Rank = () => {
       <div className="divcomranked">
         <DataRanked />
         {isAppInstalled === false && (
-          <Button onClick={handleInstallClick} className="btninstall">Instalar App</Button>
+          <button onClick={handleInstallClick} className="btninstall">Instalar App</button>
         )}
       </div>
     </div>
