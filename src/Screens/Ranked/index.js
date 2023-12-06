@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DataRanked } from "../../Compenents/Data/index";
 import './style.css';
+import { Button } from "@mui/material";
 
 const Rank = () => {
   const [installPromptEvent, setInstallPromptEvent] = useState(null);
@@ -43,8 +44,8 @@ const Rank = () => {
     <div className="divranked">
       <div className="divcomranked">
         <DataRanked />
-        {!isAppInstalled && canInstall && (
-          <button onClick={handleInstallClick} className="btninstall">Instalar App</button>
+        {!isAppInstalled && (
+          <Button onClick={handleInstallClick} className="btninstall">Instalar App</Button>
         )}
       </div>
     </div>

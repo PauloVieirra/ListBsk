@@ -5,15 +5,12 @@ import './style.css';
 import { DataRanked } from "../../Compenents/Data";
 
 const Wellcome = () => {
- 
-
   return (
     <div className="container-wellcome">
       <div>
        <DataRanked/>
       </div>
       <div className="basewellcome">
-       
         <Link to="/SignIn" className="btnent">
           <Button style={{color:'#fff'}} >Entrar</Button>
         </Link>
