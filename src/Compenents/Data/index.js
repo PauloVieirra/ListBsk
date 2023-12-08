@@ -423,25 +423,24 @@ const DataRanked = () => {
             <div className="space" />
           </div>
           {clickedCardData && (
-            <Modal
-              open={modalPlayer}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <div className="modal">
-                <div className="center-modal" style={{display:'flex', height:'100vh' ,backgroundColor:'yellow'}}>
-                  <div>
-                    <img src={clickedCardData.img} className="imgprofile" alt="Player profile" />
-                  </div>
-                  <h4>{clickedCardData.nome}</h4>
-                  <h4>{clickedCardData.ano}</h4>
-                  <h4>{clickedCardData.estatura}</h4>
-                  <h4>{clickedCardData.posit}</h4>
-
-                  <Button onClick={handleClosePlayer}>Fechar</Button>
-                </div>
-              </div>
-            </Modal>
+           <Modal
+           open={modalPlayer}
+           aria-labelledby="modal-modal-title"
+           aria-describedby="modal-modal-description"
+         >
+           <div className="modal" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+             <div className="profile-container" style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
+               <img src={clickedCardData.img} className="imgprofile" alt="Player profile" style={{ width: '200px', height: '200px', borderRadius: '50%', objectFit: 'cover' }} />
+               <h2 style={{ margin: '10px 0' }}>{clickedCardData.nome}</h2>
+               <p>Year: {clickedCardData.ano}</p>
+               <p>Height: {clickedCardData.estatura}</p>
+               <p>Position: {clickedCardData.posit}</p>
+         
+               <Button onClick={handleClosePlayer} style={{ marginTop: '20px' }}>Close</Button>
+             </div>
+           </div>
+         </Modal>
+         
           )}
         </>
       );
