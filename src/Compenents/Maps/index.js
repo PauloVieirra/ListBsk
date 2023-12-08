@@ -140,6 +140,7 @@ closeModal() {
           <div className="modal">
 
           <div className="center-modal">
+
              <h2 id="modal-modal-title">{selectedLocation?.local}</h2>
             <Button onClick={this.closeModal}>Fechar</Button>
           </div>

@@ -156,6 +156,7 @@ p {
 .datarankline{
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 .ranklinedatas{
     margin-left: 8px;

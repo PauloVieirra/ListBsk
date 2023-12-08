@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
     height: 100vh;
     background-color: #f7f7f7;
    }
@@ -21,5 +22,30 @@
     border: 1px solid #ddd;
     border-radius: 5px;
    }
+
+   .divtopsignin{
+    display: flex;
+    width:100vw;
+    height: 40%;
+    font-size: large;
+   }
+
+   .divinputsign{
+    display: flex;
+    width: 100vw;
+    height: 30%;
+    font-size: large;
+   }
+
+   .divbottomsignin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 30%;
+    font-size: large;
+   }
+
+  
    
  

@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -56,16 +57,21 @@
 .container {
   background: linear-gradient(30deg, rgba(14, 13, 13), rgb(31, 29, 29), rgba(14, 13, 13, 0.9), #484b52); 
 }
-.btncad{
+.btncad-primary{
   display: flex;
+  width: 90%;
+  height: 42px;
   align-items: center;
   justify-content: center;
-  background-color: rgba(33, 34, 33, 0.842);
-  text-decoration: none;
-  margin: 5px;
-  border-radius: 4px;
-  color: rgba(50, 54, 56, 0.452)
 }
+.btncad-secundary{
+  display: flex;
+  width: 90%;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+}
+
 .btnent{
   display: flex;
   align-items: center;
@@ -76,4 +82,7 @@
   min-width: 160px;
   margin: 5px;
   border-radius: 4px;
+}
+input{
+  background-color: #484b52;
 }

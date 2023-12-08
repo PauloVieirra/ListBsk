@@ -11,6 +11,7 @@ import './style.css';
             lat: -15.809769,
             lng: -47.921585,
             local: "Parque da Cidade",
+           
         },
         {
             title: "22", 
@@ -23,6 +24,14 @@ import './style.css';
             lat: -15.839036, 
             lng: -48.014096,
             local: "202AC",
+            regras: {
+              TempoDeJogo: "10 minutos",
+              Substituicao: "O proximo da lista ",
+              Pontuacao: "12 ponto",
+              Empate: "sai as duas equipes, mesmo se for 10 a 10",
+              Continua: "o time que fizer 12 pontos em 10 minutos ou menos",
+              
+            }
         }, 
         {  
             title: " 18", 
@@ -38,6 +47,14 @@ import './style.css';
             local: "TaguaPark",
             tipo: "Aberto"
         }, 
+        {   
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAAHsuz_zAuPNtKe_1RQx542R0nnq_y26mIQ&usqp=CAU",
+          title: " 0 ", 
+          lat: -15.829310,
+          lng: -48.013853,
+          local: "301 AC",
+          tipo: "Aberto"
+      }, 
 ];
 
 const DataRanked = () => {
@@ -59,6 +76,8 @@ const DataRanked = () => {
             sti: 1,
             blo: 15,
             ass: 26,
+            bthree: 3,
+            mvp:1,
         },
         {   
             ano: 1990,
@@ -72,6 +91,8 @@ const DataRanked = () => {
             sti: 10,
             blo: 8,
             ass: 26,
+            bthree: 13,
+            mvp:2,
         },
         {   
             ano: 2000,
@@ -85,6 +106,8 @@ const DataRanked = () => {
             sti: 13,
             blo: 18,
             ass: 11,
+            bthree: 12,
+            mvp:3,
         },
         {   
             ano: 1998,
@@ -98,6 +121,8 @@ const DataRanked = () => {
             sti: 16,
             blo: 19,
             ass: 16,
+            bthree: 9,
+            mvp:1,
         },
         {   
             ano: 1972,
@@ -111,6 +136,8 @@ const DataRanked = () => {
             sti:18,
             blo:1,
             ass:2,
+            bthree: 22,
+            mvp:5,
         },
         {   
             ano: 2005,
@@ -124,6 +151,8 @@ const DataRanked = () => {
             sti:9,
             blo:30,
             ass:33,
+            bthree: 23,
+            mvp:3,
         },
         {   
             ano: 2001,
@@ -137,6 +166,8 @@ const DataRanked = () => {
             sti:6,
             blo:24,
             ass:17,
+            bthree: 8,
+            mvp:1,
         },
         {   
             ano: 2009,
@@ -150,6 +181,8 @@ const DataRanked = () => {
             sti:5,
             blo:31,
             ass:31,
+            bthree: 3,
+            mvp:1,
         },
         {   
             ano: 1996,
@@ -163,6 +196,8 @@ const DataRanked = () => {
             sti:3,
             blo:20,
             ass:51,
+            bthree: 3,
+            mvp:1,
         },
         {   
             ano: 1980,
@@ -176,6 +211,8 @@ const DataRanked = () => {
             sti:2,
             blo:71,
             ass:41,
+            bthree: 3,
+            mvp:1,
         },
         {   
             ano: 1988,
@@ -189,6 +226,8 @@ const DataRanked = () => {
             sti: 0,
             blo:56,
             ass:79,
+            bthree: 3,
+            mvp:1,
         },
         {   
             ano: 2010,
@@ -202,6 +241,8 @@ const DataRanked = () => {
             sti:21,
             blo:23,
             ass:26,
+            bthree: 3,
+            mvp:1,
         },
         {   
             ano: 1978,
@@ -215,6 +256,8 @@ const DataRanked = () => {
             sti:17,
             blo:17,
             ass:50,
+            bthree: 3,
+            mvp:1,
         },
         {   
             ano: 1990,
@@ -228,6 +271,8 @@ const DataRanked = () => {
             sti:7,
             blo:15,
             ass:102,
+            bthree: 3,
+            mvp:1,
         },
         {   
             ano: 1978,
@@ -241,6 +286,8 @@ const DataRanked = () => {
             sti:4,
             blo:10,
             ass:38,
+            bthree: 3,
+            mvp:1,
         }
        
     ];
@@ -266,6 +313,12 @@ const DataRanked = () => {
             break;
           case 'Bloqueio':
             sortedPlayers.sort((a, b) => b.blo - a.blo);
+            break;
+            case 'BolaTripla':
+            sortedPlayers.sort((a, b) => b.bthree - a.bthree);
+            break;
+            case 'MVP':
+            sortedPlayers.sort((a, b) => b.mvp - a.mvp);
             break;
           default:
             break;
@@ -328,11 +381,17 @@ const DataRanked = () => {
               <Button onClick={() => handleSortChange('Still')}>Still</Button>
               <Button onClick={() => handleSortChange('Bloqueio')}>Block</Button>
               <Button onClick={() => handleSortChange('Asistencia')}>Assit</Button>
+              <Button onClick={() => handleSortChange('Bloqueio')}>Block</Button>
+              <Button onClick={() => handleSortChange('Asistencia')}>Assit</Button>
+              <Button onClick={() => handleSortChange('BolaTripla')}>3Ball</Button>
+              <Button onClick={() => handleSortChange('MVP')}>MVP</Button>
             </div>
           </div>
           <div className="diccardrank">
             {filteredAndSortedData.map((event, index) => (
+              
               <div key={index} className="carddranketails" onClick={() => handleCardClick(event)}>
+
                 <div className="rankimagecard">
                   {event.img && <img src={event.img} className="imgfront" alt="Player" />}
                 </div>
@@ -340,21 +399,27 @@ const DataRanked = () => {
                   <h4>{event.nome}</h4>
                   <div className="datarankline">
                     <div className="ranklinedatas">
-                      <p>pts: {event.pts}</p>
-                      <p>rbt: {event.rbt}</p>
+                      <p><strong>Pts:</strong>  {event.pts}</p>
+                      <p><strong>Rbt:</strong> {event.rbt}</p>
                     </div>
                     <div className="ranklinedatas">
-                      <p>rou: {event.rou}</p>
-                      <p>sti: {event.sti}</p>
+                      <p><strong>Rou:</strong> {event.rou}</p>
+                      <p><strong>Sti</strong> {event.sti}</p>
                     </div>
                     <div className="ranklinedatas">
-                      <p>blo: {event.blo}</p>
-                      <p>Asist: {event.ass}</p>
+                      <p><strong>Blo:</strong> {event.blo}</p>
+                      <p><strong>Asist:</strong> {event.ass}</p>
                     </div>
+                    <div className="ranklinedatas">
+                      <p><strong>3Ball:</strong> {event.bthree}</p>
+                      <p><strong>MVP:</strong> {event.mvp}</p>
+                    </div>
+                    
                   </div>
                 </div>
               </div>
             ))}
+            
             <div className="space" />
           </div>
           {clickedCardData && (
