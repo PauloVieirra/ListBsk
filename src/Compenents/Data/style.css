@@ -7,14 +7,15 @@
     display: flex;
     width: 100vw;
     height: 68px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     background-color: #fff;
 }
 .seachBar{
-    width: 90%;
-    height: auto;
-    border-radius: 50px;
+    display: flex;
+    width: 98%;
+    height: 48px;
+    border-radius: 100px;
 }
 
 .listfront {
@@ -80,13 +81,18 @@ background-color: aqua;
 
 .modal{
     display: flex;
-    background-color: aqua;
+    flex-direction: column;
+    width: 100vw;
+    height: 100%;
+    background-color: #ffffff;
 }
-.center-modal{
-    background-color: aquamarine;
+.modalfundo{
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    justify-content: center;
+    background-color: #fff;
 }
-
-
 /*Ranking*/
    
 .player-info {
@@ -256,11 +262,46 @@ p {
 }
 
 
-/*Profile*/
+/*Profile style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover' }}*/
 
 .imgprofile{
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: #eb902798;
+    border-style:groove;
+    border-width: 4px;
 }
 
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    width: 94%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.profile-top{
+    display: flex;
+    flex-direction: row;
+    
+}
+.profile-into{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-left: 16px;
+    
+}
+.profile-datas{
+    display: flex;
+    flex-direction: row;
+    
+}
+.pa{
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+    color: #525252;
+}

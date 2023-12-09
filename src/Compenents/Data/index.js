@@ -365,8 +365,9 @@ const DataRanked = () => {
       return (
         <>
           <div className="divtop">
-            <Head />
+           <Head/>
             <div className="divseachBar">
+              
               <TextField
                 label="Buscar jogador"
                 value={searchTerm}
@@ -428,16 +429,27 @@ const DataRanked = () => {
            aria-labelledby="modal-modal-title"
            aria-describedby="modal-modal-description"
          >
-           <div className="modal" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-             <div className="profile-container" style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
-               <img src={clickedCardData.img} className="imgprofile" alt="Player profile" style={{ width: '200px', height: '200px', borderRadius: '50%', objectFit: 'cover' }} />
-               <h2 style={{ margin: '10px 0' }}>{clickedCardData.nome}</h2>
-               <p>Year: {clickedCardData.ano}</p>
-               <p>Height: {clickedCardData.estatura}</p>
-               <p>Position: {clickedCardData.posit}</p>
-         
+           <div className="modal">
+            <div className="modalfundo">
+             <div className="profile-container">
+              <div className="profile-top"> 
+                <div className="profile-img">
+                 <img src={clickedCardData.img} className="imgprofile" alt="Player profile"  />
+                  </div>
+                  <div className="profile-into">
+                     <h2 style={{ margin: '10px 0' }}>{clickedCardData.nome}</h2>
+                     <div className="profile-datas">
+                      <p className="pa"> <strong>Ano:</strong> {clickedCardData.ano}</p>
+                      <p className="pa"><strong>Est: </strong> {clickedCardData.estatura}</p>
+                      <p className="pa"><strong>pos: </strong> {clickedCardData.posit}</p>
+                     </div>
+                  </div>
+              </div>
+              <div>
                <Button onClick={handleClosePlayer} style={{ marginTop: '20px' }}>Close</Button>
              </div>
+              </div>
+             </div>   
            </div>
          </Modal>
          
