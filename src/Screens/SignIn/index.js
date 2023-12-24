@@ -3,7 +3,7 @@ import { useAuth } from '../../Context/useContext';
 import { useNavigate, Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Button, Alert } from '@mui/material'; // Importando componentes do Material-UI
+import { Button, Alert } from '@mui/material';
 import './style.css';
 import '../../../src/App.css';
 

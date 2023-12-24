@@ -185,6 +185,7 @@ p {
     z-index: 80;
     top: 0px;
     left: 0px;
+    background-color: #fff;
   }
   
   .rank-filter Button {

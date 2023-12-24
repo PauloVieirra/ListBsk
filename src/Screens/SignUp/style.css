@@ -1,15 +1,16 @@
-.signin-container {
+.signup-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: 100%;
     background-color: #f7f7f7;
    }
    
    .signin-container h2 {
-    font-size: 2rem;
     color: #333;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
    }
    
