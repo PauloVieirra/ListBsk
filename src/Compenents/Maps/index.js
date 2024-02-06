@@ -142,6 +142,8 @@ closeModal() {
           <div className="center-modal">
 
              <h2 id="modal-modal-title">{selectedLocation?.local}</h2>
+             <img src={selectedLocation?.image}/>
+             <div> </div>
             <Button onClick={this.closeModal}>Fechar</Button>
           </div>
            

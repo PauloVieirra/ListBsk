@@ -24,12 +24,14 @@ import './style.css';
             lat: -15.839036, 
             lng: -48.014096,
             local: "202AC",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAAHsuz_zAuPNtKe_1RQx542R0nnq_y26mIQ&usqp=CAU",
             regras: {
-              TempoDeJogo: "10 minutos",
-              Substituicao: "O proximo da lista ",
+              Tempo: " Se 2 times completos de proxima, o tempo de jogo sera de 10 minutos",
+              Substituicao: "O proximo jogador da lista ",
               Pontuacao: "12 ponto",
               Empate: "sai as duas equipes, mesmo se for 10 a 10",
               Continua: "o time que fizer 12 pontos em 10 minutos ou menos",
+
               
             }
         }, 
@@ -456,7 +458,7 @@ const DataRanked = () => {
           )}
         </>
       );
-    }
+}
 
 const DataPlayers = () => {
     const [showFullDiv, setShowFullDiv] = useState(true);

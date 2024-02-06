@@ -8,8 +8,7 @@ import Cadastro from '../Screens/Cadastro';
 const AuthRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Wellcome />} /> 
-      <Route path="/SignIn" element={<SignIn />} />
+      <Route path="/" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Cadastro" element={<Cadastro />} />
     </Routes>

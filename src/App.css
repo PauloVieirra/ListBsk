@@ -57,6 +57,7 @@
 .container {
   background: linear-gradient(30deg, rgba(14, 13, 13), rgb(31, 29, 29), rgba(14, 13, 13, 0.9), #484b52); 
 }
+
 .btncad-primary{
   display: flex;
   width: 90%;

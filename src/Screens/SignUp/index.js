@@ -25,8 +25,16 @@ const SignUp = () => {
   };
 
   return (
+  
+ 
+
+ 
     <div className="signup-container">
-      
+      <div className='container-bartop'>
+      <Link to={'/'}>
+        <div style={{margin:'10px', width:'50px', height:'30px'}}>Voltar</div>
+      </Link>
+      </div>
 <Box
       component="form"
       sx={{
@@ -57,20 +65,17 @@ const SignUp = () => {
             multiline
             maxRows={4}
         />
-      </Box>
+</Box>
 
+      <Button className='btncad-primary' variant="contained" style={{ marginBottom: '10px', marginTop:'10px',width:'90%'}} onClick={handleSignUp}>
+          Cadastrar
+      </Button>
 
-
-
-
-      <Button onClick={handleSignUp}>Cadastrar</Button>
-
-      <Link to="/SignIn">
-        <Button >SigIn</Button>
-      </Link>
       {error && <p>{error}</p>}
     </div>
+   
   );
 };
+
 
 export default SignUp;
