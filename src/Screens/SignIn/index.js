@@ -57,7 +57,7 @@ const SignIn = () => {
            value={email}
            style={{height:'auto', width: '90%', margin:8, backgroundColor:"#fff"}}
            onChange={(e) => setEmail(e.target.value)}
-          id="outlined-multiline-flexible"
+          id="outlined-multiline-flexible-signin-email"
           label="Email"
           multiline
           maxRows={4}
@@ -68,7 +68,7 @@ const SignIn = () => {
             value={password}
             style={{height:'auto',  width: '90%', margin:8, backgroundColor:"#fff"}}
             onChange={(e) => setPassword(e.target.value)}
-            id="outlined-multiline-flexible"
+            id="outlined-multiline-flexible-signin-password"
             label="Senha"
             multiline
             maxRows={4}

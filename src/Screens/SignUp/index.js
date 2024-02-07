@@ -12,32 +12,43 @@ const SignUp = () => {
   const [passwordValidation, setPasswordValidation] = useState ('');
   const [btnhability, setBtnHability] = useState (false);
   const [error, setError] = useState(null);
+  const [errorEmail, setErrorEmail] = useState(null);
   const navigate = useNavigate();
-  
+
 
 
   const handleSignUp = async () => {
     try {
       setError(null);
       await signUpWithEmailAndPassword(email, password);
-      navigate('/Ranked');// Redirecione para a tela 'Home' após o cadastro bem-sucedido
+      navigate('/Ranked'); // Redireciona para a tela 'Home' após o cadastro bem-sucedido
     } catch (error) {
-      setError(error.message);
+      if (error.code === 'auth/weak-password') {
+        setError('A senha deve ter pelo menos 6 caracteres.');
+      } else {
+        setError('Ocorreu um erro ao criar a conta. Por favor, tente novamente.');
+      }
     }
   };
+  
 
   const handleValidatePassword = () => {
-    setBtnHability(password === passwordValidation && isValidEmail(email));
-  };
+    const isEmailValid = isValidEmail(email);
+    setBtnHability(password === passwordValidation && isEmailValid);
+    setError(!isEmailValid ? '' : passwordValidation !== password ? 'Sua senha deve ser igual ao campo anterior' : null);
+};
+
 
   const isValidEmail = (email) => {
     // Expressão regular para validar o formato do e-mail
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+    
   };
 
   const handleValidateEmail = () => {
-  
+    const isEmailValid = isValidEmail(email);
+    setErrorEmail( email != '' && !isEmailValid ?  'Informe um email válido' : null);
   };
 
 
@@ -48,47 +59,55 @@ const SignUp = () => {
  
     <div className="signup-container">
       <div className='container-bartop'>
-      <Link to={'/'}>
-        <div style={{margin:'10px', width:'50px', height:'30px'}}>Voltar</div>
+      <Link to={'/'} className='link-style' >
+        <div className='bt-back'>Voltar</div>
       </Link>
       </div>
       <div className='container-battitle'>
        <div className='container-titletext'>Cadastro</div> 
-       <div className='container-text'>Para criar um conta, basta informar seu e-mail e criar uma senha!</div> 
+       <div className='container-text'>Para criar uma conta, basta informar seu e-mail e criar uma senha!</div> 
       </div>
      <div className='container-input'>
+       { errorEmail &&
+     <div className='container-notification'>{errorEmail && <p>{errorEmail}</p>}</div>
+       }
        <TextField
           type="email"
           value={email}
           style={{height:'auto', width: '90%', margin:8, backgroundColor:"#fff"}}
           onChange={(e) => setEmail(e.target.value)}
           onBlur={handleValidateEmail} 
-          id="outlined-multiline-flexible"
-          label="Informe seu Email aqui"
+          id="outlined-multiline-flexible-signup-email"
+          label="Informe seu email aqui"
           multiline
           maxRows={4}
         />
+
        <TextField
             type="password"
             value={password}
             style={{height:'auto', width: '90%', margin:8, backgroundColor:"#fff"}}
             onChange={(e) => setPassword(e.target.value)}
-            id="outlined-multiline-flexible"
+            id="outlined-multiline-flexible-signup-password"
             label="Crie sua senha aqui"
             multiline
             maxRows={4}
         />
+         { error &&
+        <div className='container-notification'>{error && <p>{error}</p>}</div>
+         }
         <TextField
             type="password"
             value={passwordValidation}
             style={{height:'auto', width: '90%', margin:8, backgroundColor:"#fff"}}
             onChange={(e) => setPasswordValidation(e.target.value)}
             onBlur={handleValidatePassword}
-            id="outlined-multiline-flexible"
+            id="outlined-multiline-flexible-signup-confirm"
             label="Repetir sua senha aqui"
             multiline
             maxRows={4}
         />
+        
      </div>
 
 
@@ -96,7 +115,7 @@ const SignUp = () => {
           Cadastrar
       </Button>
 
-      {error && <p>{error}</p>}
+      
     </div>
    
   );

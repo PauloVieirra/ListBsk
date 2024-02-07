@@ -69,3 +69,24 @@
     height: 30%;
     font-size: large;
    }
+   .container-notification{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 10px;
+    color: red;
+    font-size: 12px;
+   }
+   .link-style{
+    text-decoration: none;
+    color: inherit;
+   }
+   .bt-back{
+    margin: 10px;
+    width: 50px;
+    height: 32px;
+    font-size: 16px;
+    font-weight: 600;
+   }
+
+   
