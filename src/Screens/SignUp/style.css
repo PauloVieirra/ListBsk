@@ -47,5 +47,25 @@
     align-items: center;
     position: absolute;
     top: 0px;
-
+   }
+   .container-battitle{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100px;
+   }
+   .container-titletext{
+    font-size: 24px;
+    margin-bottom: 6px;
+   }
+   .container-text{
+    font-size: 14px;
+   }
+   .container-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    font-size: large;
    }

@@ -9,6 +9,8 @@ const SignUp = () => {
   const { signUpWithEmailAndPassword } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordValidation, setPasswordValidation] = useState ('');
+  const [btnhability, setBtnHability] = useState (false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   
@@ -24,6 +26,21 @@ const SignUp = () => {
     }
   };
 
+  const handleValidatePassword = () => {
+    setBtnHability(password === passwordValidation && isValidEmail(email));
+  };
+
+  const isValidEmail = (email) => {
+    // Expressão regular para validar o formato do e-mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleValidateEmail = () => {
+  
+  };
+
+
   return (
   
  
@@ -35,39 +52,47 @@ const SignUp = () => {
         <div style={{margin:'10px', width:'50px', height:'30px'}}>Voltar</div>
       </Link>
       </div>
-<Box
-      component="form"
-      sx={{
-        '& > :not(style)': { ml: '5%', mr: '5%', mb: 2,mt:1, width: '90vw', backgroundColor:"#000"},
-      }}
-      noValidate
-      autoComplete="off"
-    >
+      <div className='container-battitle'>
+       <div className='container-titletext'>Cadastro</div> 
+       <div className='container-text'>Para criar um conta, basta informar seu e-mail e criar uma senha!</div> 
+      </div>
+     <div className='container-input'>
        <TextField
-           type="email"
-           placeholder="Email"
-           value={email}
-           style={{height:'auto', backgroundColor:"#fff"}}
-           onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          value={email}
+          style={{height:'auto', width: '90%', margin:8, backgroundColor:"#fff"}}
+          onChange={(e) => setEmail(e.target.value)}
+          onBlur={handleValidateEmail} 
           id="outlined-multiline-flexible"
-          label="Email"
+          label="Informe seu Email aqui"
           multiline
           maxRows={4}
         />
        <TextField
             type="password"
-            placeholder="Senha"
             value={password}
-            style={{height:'auto', backgroundColor:"#fff"}}
+            style={{height:'auto', width: '90%', margin:8, backgroundColor:"#fff"}}
             onChange={(e) => setPassword(e.target.value)}
             id="outlined-multiline-flexible"
-            label="Senha"
+            label="Crie sua senha aqui"
             multiline
             maxRows={4}
         />
-</Box>
+        <TextField
+            type="password"
+            value={passwordValidation}
+            style={{height:'auto', width: '90%', margin:8, backgroundColor:"#fff"}}
+            onChange={(e) => setPasswordValidation(e.target.value)}
+            onBlur={handleValidatePassword}
+            id="outlined-multiline-flexible"
+            label="Repetir sua senha aqui"
+            multiline
+            maxRows={4}
+        />
+     </div>
 
-      <Button className='btncad-primary' variant="contained" style={{ marginBottom: '10px', marginTop:'10px',width:'90%'}} onClick={handleSignUp}>
+
+      <Button className='btncad-primary' variant="contained" style={{ marginBottom: '10px', marginTop:'10px',width:'90%'}} onClick={handleSignUp} disabled={!btnhability} >
           Cadastrar
       </Button>
 
