@@ -92,7 +92,7 @@ const SignUp = () => {
      </div>
 
 
-      <Button className='btncad-primary' variant="contained" style={{ marginBottom: '10px', marginTop:'10px',width:'90%'}} onClick={handleSignUp} disabled={!btnhability} >
+      <Button className='btncad-primary' variant="contained" style={{ marginBottom: '10px', marginTop:'80px',width:'90%'}} onClick={handleSignUp} disabled={!btnhability} >
           Cadastrar
       </Button>
 
