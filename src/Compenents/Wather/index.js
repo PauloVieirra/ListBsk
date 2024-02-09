@@ -93,20 +93,17 @@ const Weather = () => {
   <div className="weather-details">
     <div className="humidity">
       <i className="fa-solid fa-water"></i>
-      <div className="text">
-        <span>{weatherData.main?.humidity}%</span>
-        <p>Humidity</p>
+      <div className="texta">
+        <span style={{fontSize:'22px'}}>{weatherData.main?.humidity}%</span>
+        <p>Humidade</p>
       </div>
     </div>
     <div className="wind">
       <i className="fa-solid fa-wind"></i>
-      <div className="text">
-        <span>{weatherData.wind?.speed}Km/h</span>
-        <p>Wind Speed</p>
+      <div className="texts">
+        <span style={{fontSize:'22px'}}>{weatherData.wind?.speed}Km/h</span>
+        <p>Vento</p>
       </div>
-    </div>
-    <div className="rain-probability">
-      <i className="fa-solid fa-cloud-showers"></i>
     </div>
   </div>
 )}

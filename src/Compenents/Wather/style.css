@@ -48,7 +48,7 @@
   }
   
   img {
-    width: 60%;
+    width: 50%;
   }
   
   .weather-box {
@@ -62,7 +62,7 @@
   
   .temperature {
     font-size: 36px;
-    font-weight: 800px;
+    font-weight: 600;
     margin: 10px 0;
   }
   
@@ -72,6 +72,10 @@
   
   .weather-details {
     display: flex;
+    width: 100%;
+    padding: 6px;
+    justify-content: space-between;
+    margin-top: 20px;
   }
   
   .humidity,
@@ -86,8 +90,13 @@
     margin-right: 8px;
   }
   
-  .text {
+  .texta {
+    text-align: left;
+    font-weight: 600;
+  }
+  .texts {
     text-align: right;
+    font-weight: 600;
   }
   
   .text span {
