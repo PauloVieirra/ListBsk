@@ -15,6 +15,25 @@ const SignIn = () => {
   const [successMessage, setSuccessMessage] = useState(null);
   const navigate = useNavigate();
 
+  const [installPromptEvent, setInstallPromptEvent] = useState(null);
+  const [isAppInstalled, setIsAppInstalled] = useState(false);
+  const [canInstall, setCanInstall] = useState(false);
+
+  const handleInstallClick = async () => {
+    if (installPromptEvent) {
+      installPromptEvent.prompt();
+      const userChoice = await installPromptEvent.userChoice;
+      if (userChoice.outcome === 'accepted') {
+        setIsAppInstalled(true);
+        console.log('Usuário aceitou a instalação');
+
+      } else {
+        console.log('Usuário recusou a instalação');
+      }
+      setInstallPromptEvent(null);
+    }
+  };
+
   const handleSignIn = async () => {
     try {
       setError(null);
@@ -83,6 +102,15 @@ const SignIn = () => {
         <Button className='btncad-secundary' variant="outlined" color="secondary" style={{ width:'90%', backgroundColor:"#EEE", color:"#000" }}onClick={handleSignUp} >
           Cadastrar
         </Button>
+
+        <div className='divinstallinfo'>
+          {!isAppInstalled && canInstall && (
+            <Alert variant="outlined" severity="info">
+              Parece que você ainda não instalou nosso aplicativo. 
+              Clique no botão "Instalar App" para ter uma experiência melhor.
+            </Alert>
+          )}
+        </div>
       </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import React,{useState, useMemo} from "react";
 import { Button, Modal, TextField } from "@mui/material";
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Head from "../Header";
+import Weather from "../Wather";
 import { useAuth } from "../../Context/useContext";
 import './style.css';
 
@@ -62,7 +64,7 @@ import './style.css';
 const DataRanked = () => {
     
     const [sortBy, setSortBy] = useState('');
-    const[modalPlayer, setModalPlayer] = useState(false);
+    const [modalPlayer, setModalPlayer] = useState(false);
     const [clickedCardData, setClickedCardData] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -445,6 +447,7 @@ const DataRanked = () => {
                       <p className="pa"><strong>Est: </strong> {clickedCardData.estatura}</p>
                       <p className="pa"><strong>pos: </strong> {clickedCardData.posit}</p>
                      </div>
+                     
                   </div>
               </div>
               <div>
@@ -466,64 +469,9 @@ const DataPlayers = () => {
         {
             img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
             nome: "Play 1",
-            pts: 230,
+            pts: 2301,
             reb: 30,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 2",
-            pts: 200,
-            reb: 32,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 3",
-            pts: 120,
-            reb: 160,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 4",
-            pts: 500,
-            reb: 2,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 5",
-            pts: 30,
-            reb: 30,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 6",
-            pts: 320,
-            reb: 6,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 7",
-            pts: 211,
-            reb: 36,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 8",
-            pts: 125,
-            reb: 62,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 9",
-            pts: 85,
-            reb: 160,
-        },
-        {   
-            img: "https://www.ocregister.com/wp-content/uploads/migration/ksw/kswl65-b78571242z.120091110091142000giqknq7h.1.jpg?w=620",
-            nome: "Play 10",
-            pts: 301,
-            reb: 45,
         }
-        
        
        
     ];
@@ -532,18 +480,16 @@ const DataPlayers = () => {
         setShowFullDiv(!showFullDiv);
     };
 
+    
+
     return (
       <>
-        <div onClick={toggleDiv} className={`conrbtnflat ${showFullDiv ? '' : 'retractbtn'}`}>See</div>
-        <div className={`listfront ${showFullDiv ? '' : 'retract'}`}>
-            {DataRankedPlay.map((event, index) => (
-                   <div key={index} className="player-info">
-                         {event.img && <img src={event.img}  className="imgfront" />}
-                         <p>pts: {event.pts}</p>
-                       <p>reb: {event.reb}</p>
-               </div>
-            ))}
-        </div>
+        <div onClick={toggleDiv} className={`conrbtnflat ${showFullDiv ? '' : 'retractbtn'}`}>
+        <WbSunnyIcon style={{ fontSize: 32, color: 'yellow' }} />
+      </div>
+      <div className={`listfront ${showFullDiv ? '' : 'retract'}`}>
+       <Weather/>
+      </div>
      </>
     );
 }

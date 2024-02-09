@@ -31,13 +31,12 @@ const SignUp = () => {
     }
   };
   
-
   const handleValidatePassword = () => {
     const isEmailValid = isValidEmail(email);
-    setBtnHability(password === passwordValidation && isEmailValid);
-    setError(!isEmailValid ? '' : passwordValidation !== password ? 'Sua senha deve ser igual ao campo anterior' : null);
+    setBtnHability(password === passwordValidation && password !== '' && isEmailValid);
+    setError( !isEmailValid ? '' : passwordValidation !== password ?  'Sua senha deve ser igual ao campo anterior' : null);
+    
 };
-
 
   const isValidEmail = (email) => {
     // Expressão regular para validar o formato do e-mail
@@ -50,7 +49,6 @@ const SignUp = () => {
     const isEmailValid = isValidEmail(email);
     setErrorEmail( email != '' && !isEmailValid ?  'Informe um email válido' : null);
   };
-
 
   return (
   

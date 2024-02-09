@@ -10,7 +10,7 @@ const Account = () => {
  const handleLogout = async () => {
     try {
       await logout();
-      navigate("/SignIn");
+      navigate("/");
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
     }
