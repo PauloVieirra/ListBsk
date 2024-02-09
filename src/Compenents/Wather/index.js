@@ -68,9 +68,10 @@ const Weather = () => {
         <div className="search-box">
           <i className="fa-solid fa-location-dot"></i>
           {loading ? (
-            <CircularProgress style={{ marginLeft: '10px' }} />
+           
+           <div className="contloaderclima"> <CircularProgress style={{ marginLeft: '10px' }} /> </div>
           ) : (
-             <div></div>
+            <div></div>
           )}
         </div>
 
@@ -81,7 +82,7 @@ const Weather = () => {
           </div>
         )}
 
-        {weatherData && (
+        {weatherData && loading === false && (
           <div className="weather-box">
             <img src={`http://openweathermap.org/img/wn/${weatherData.weather[0]?.icon}.png`} alt="Weather Icon" />
             <p className="temperature">{weatherData.main?.temp}<span>°C</span></p>

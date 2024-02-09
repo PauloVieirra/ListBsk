@@ -42,7 +42,7 @@ const SignIn = () => {
       // Aguardar 3 segundos antes de limpar a mensagem de sucesso
       setTimeout(() => {
         setSuccessMessage(null);
-        navigate('/Ranked');
+        navigate('/');
       }, 3000); // 3000 milissegundos = 3 segundos
     } catch (error) {
       setError('Erro ao fazer login. Verifique suas credenciais.');
