@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal, CircularProgress } from "@mui/material";
 import './style.css';
+ import Broken from '../img/broken.png';
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
   const [modalPlayer, setModalPlayer] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [backgroundImage, setBackgroundImage] = useState(null);
+
+  
 
   const APIKey = '4077a27697c8f4867859e6e970b8d488';
 
@@ -21,6 +25,7 @@ const Weather = () => {
         } else {
           setError(null);
           setWeatherData(json);
+          setBackgroundImage(getBackgroundImage(json.weather[0]?.description));
         }
       })
       .catch(error => {
@@ -30,6 +35,43 @@ const Weather = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const getBackgroundImage = (weatherMain) => {
+    switch (weatherMain.toLowerCase()) {
+      case 'broken clouds':
+        return `url(${Broken})`;
+
+      case 'clear':
+        return 'url("caminho/para/imagem-ensolarado.jpg")';
+
+      case 'clouds':
+        return 'url("caminho/para/imagem-nublado.jpg")';
+
+      case 'rain':
+        return 'url("caminho/para/imagem-chuva.jpg")';
+
+      case 'snow':
+        return 'url("caminho/para/imagem-neve.jpg")';
+
+      case 'thunderstorm':
+        return 'url("caminho/para/imagem-tempestade.jpg")';
+
+      case 'drizzle':
+        return 'url("caminho/para/imagem-chuvisco.jpg")';
+
+      case 'mist':
+        return 'url("caminho/para/imagem-neblina.jpg")';
+
+      case 'fog':
+        return 'url("caminho/para/imagem-nevoa.jpg")';
+
+      case 'tornado':
+        return 'url("caminho/para/imagem-tornado.jpg")';
+
+      default:
+        return 'url("caminho/para/imagem-desconhecida.jpg")';
+    }
   };
 
   useEffect(() => {
@@ -64,7 +106,7 @@ const Weather = () => {
 
   return (
    
-      <div className="container-clima">
+      <div className="container-clima" style={{ backgroundImage: backgroundImage, backgroundSize: 'cover'}}>
         <div className="search-box">
           <i className="fa-solid fa-location-dot"></i>
           {loading ? (
@@ -84,9 +126,14 @@ const Weather = () => {
 
         {weatherData && loading === false && (
           <div className="weather-box">
+        
             <img src={`http://openweathermap.org/img/wn/${weatherData.weather[0]?.icon}.png`} alt="Weather Icon" />
-            <p className="temperature">{weatherData.main?.temp}<span>°C</span></p>
+         
+            <div>
+               <p className="temperature">{weatherData.main?.temp}<span>°C</span></p>
             <p className="description">{weatherData.weather[0]?.description}</p>
+            </div>
+           
           </div>
         )}
 
